@@ -8,6 +8,7 @@
 ## 📚 오늘 배운 것 한눈에 보기
 
 | 주제 | 설명 |
+|---|---|
 | **비동기 DB 연결** | `db_connection_async.py` - 동기 세션을 비동기로 전환 |
 | **async def 핸들러** | 모든 API 핸들러를 `async def`로 변경, `await` 추가 |
 | **Generator** | `yield`로 값을 하나씩 순서대로 내보내는 함수 |
@@ -107,6 +108,7 @@ async def get_users_handler(session = Depends(get_async_session)):
 ### 바뀐 부분 요약
 
 | 변경 전 | 변경 후 |
+|---|---|
 | `def` | `async def` |
 | `Depends(get_session)` | `Depends(get_async_session)` |
 | `session.execute(stmt)` | `await session.execute(stmt)` |
@@ -276,6 +278,7 @@ pip install "fastapi[standard]"
 ### LLM 관련 용어 정리
 
 | 용어 | 설명 |
+|---|---|
 | **LLM** | Large Language Model, 대규모 언어 모델 (ChatGPT, LLaMA 등) |
 | **GGUF** | 로컬에서 LLM을 실행할 수 있게 압축한 모델 파일 형식 |
 | **Q4_K_M** | 모델 압축 방식 (4비트 양자화, 품질/속도 균형) |
@@ -287,7 +290,6 @@ pip install "fastapi[standard]"
 | **stream** | 응답을 한 번에 받지 않고 토큰 단위로 실시간으로 받는 것 |
 
 ---
-
 ### 터미널 실습 결과 분석
 
 ```python

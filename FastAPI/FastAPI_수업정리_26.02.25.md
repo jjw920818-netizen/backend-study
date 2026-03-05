@@ -385,17 +385,16 @@ PATCH는 일부만 수정하는 요청이라 name만 보내도, age만 보내도
 요청이 들어올 때 데이터를 전달하는 3가지 방법
 ```
 
-|                  | Path Parameter | Query Parameter   | Request Body |
-
-| **위치**          | URL 경로 안      | URL 뒤 `?`          | 요청 몸통 |
-| **예시**          | `/users/1`     | `/users?name=Alex`  | `{"name": "Alex"}` |
-| **주 용도**        | 리소스 **식별**  | 필터링, 검색           | 데이터 **전송** |
-| **보안**          | URL에 노출      | URL에 노출            | URL에 노출 안 됨 ✅ |
-| **FastAPI**      | `Path(...)`   | `Query(...)`         | Pydantic 모델 |
-| **HTTP Method** | 주로 GET        | 주로 GET              | POST, PATCH, PUT |
+| | Path Parameter | Query Parameter | Request Body |
+|---|---|---|---|
+| **위치** | URL 경로 안 | URL 뒤 `?` | 요청 몸통 |
+| **예시** | `/users/1` | `/users?name=Alex` | `{"name": "Alex"}` |
+| **주 용도** | 리소스 **식별** | 필터링, 검색 | 데이터 **전송** |
+| **보안** | URL에 노출 | URL에 노출 | URL에 노출 안 됨 ✅ |
+| **FastAPI** | `Path(...)` | `Query(...)` | Pydantic 모델 |
+| **HTTP Method** | 주로 GET | 주로 GET | POST, PATCH, PUT |
 
 ---
-
 ## 10. 전체 코드 흐름 요약
 
 ```
@@ -426,19 +425,21 @@ Response Model (UserResponse) 필터링
 
 ## 11. 용어 정리
 
-|       용어          |              설명                      |
-| **Pydantic**       | 데이터 형태를 정의하고 자동 검증해주는 라이브러리 |
-| **BaseModel**      | Pydantic의 기본 클래스, 상속받으면 검증 기능 사용 가능 |
-| **상속**            | 부모 클래스의 기능을 물려받는 것 `class A(B):` |
-| **Request Body**   | POST/PATCH 요청 시 URL이 아닌 몸통에 담는 데이터 |
+| 용어 | 설명 |
+|---|---|
+| **Pydantic** | 데이터 형태를 정의하고 자동 검증해주는 라이브러리 |
+| **BaseModel** | Pydantic의 기본 클래스, 상속받으면 검증 기능 사용 가능 |
+| **상속** | 부모 클래스의 기능을 물려받는 것 `class A(B):` |
+| **Request Body** | POST/PATCH 요청 시 URL이 아닌 몸통에 담는 데이터 |
 | **Response Model** | 응답으로 내보낼 데이터 형태를 지정하는 것 |
-| **HTTPException**  | 조건에 맞지 않을 때 직접 에러를 발생시키는 것 |
-| **raise**          | 에러를 일부러 발생시키는 파이썬 문법 |
-| **status_code**    | 요청 결과를 숫자로 나타내는 HTTP 상태 코드 |
-| **PUT**            | 데이터 전체를 교체하는 HTTP 메서드 |
-| **PATCH**          | 데이터 일부만 수정하는 HTTP 메서드 |
-| **schema.py**      | 데이터 형태(모양)를 정의하는 파일 |
+| **HTTPException** | 조건에 맞지 않을 때 직접 에러를 발생시키는 것 |
+| **raise** | 에러를 일부러 발생시키는 파이썬 문법 |
+| **status_code** | 요청 결과를 숫자로 나타내는 HTTP 상태 코드 |
+| **PUT** | 데이터 전체를 교체하는 HTTP 메서드 |
+| **PATCH** | 데이터 일부만 수정하는 HTTP 메서드 |
+| **schema.py** | 데이터 형태(모양)를 정의하는 파일 |
 
+---
 
 
 > 📌 **오늘 수업 핵심 한 줄 요약**
