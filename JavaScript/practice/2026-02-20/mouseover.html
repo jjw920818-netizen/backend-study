@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 리스너 실습</title>
+</head>
+<body>
+
+    <div id="box">마우스를 올려보세요.</div>
+
+    <script>
+        // -------------------------------------------------------
+        // 1. DOM 요소 선택
+        //    document.querySelector('선택자') : CSS 선택자 방식으로
+        //    HTML 요소를 가져와서 JavaScript에서 다룰 수 있게 함
+        //    '#box' → id가 "box"인 요소를 선택
+        // -------------------------------------------------------
+        const box = document.querySelector('#box');
+
+
+        // -------------------------------------------------------
+        // 2. 이벤트 리스너 등록
+        //    요소.addEventListener('이벤트이름', 실행할함수)
+        //
+        //    - addEventListener 자체는 즉시 실행됩니다. (이벤트 등록)
+        //    - 두 번째 인자로 넣은 함수는 이벤트가 발생할 때 실행
+        //
+        //    ⚠️  반드시 함수 "자체"를 전달해야 함
+        //         함수를 실행한 결과(undefined)를 넘기면 동작하지 않음
+        //
+        //    ✅ 올바른 예: addEventListener('mouseover', changeColor)
+        //    ❌ 잘못된 예: addEventListener('mouseover', changeColor())
+        //                                                         ↑ 괄호가 있으면 실행 결과(undefined)가 전달됨
+        // -------------------------------------------------------
+
+
+        // [방법 1] 익명 함수 (function 키워드) 전달
+        //   mouseover 이벤트: 마우스 포인터가 요소 위에 올라왔을 때 발생
+        //   → 함수가 실행되면 box의 글자색을 orange로 변경
+        box.addEventListener('mouseover', function() {
+            box.style.color = 'orange';
+        });
+
+
+        // [방법 2] 화살표 함수 전달 (방법 1을 짧게 쓴 것)
+        //   mouseout 이벤트: 마우스 포인터가 요소 밖으로 나갔을 때 발생
+        //   → 함수가 실행되면 box의 글자색을 black으로 변경
+        box.addEventListener('mouseout', () => box.style.color = 'black');
+
+
+        // -------------------------------------------------------
+        // 3. [참고] 미리 정의한 함수를 이름으로 전달하는 방법
+        //    인자를 넘겨야 할 때는 화살표 함수로 한번 감싸서 전달
+        // -------------------------------------------------------
+
+        // 색상을 바꾸는 함수를 별도로 정의
+        function changeColor(color) {
+            box.style.color = color;
+        }
+
+        // 인자를 넘겨야 하므로 화살표 함수로 감싸서 전달
+        // → 이벤트 발생 시 화살표 함수가 실행되고, 그 안에서 changeColor('orange') 호출
+        // box.addEventListener('mouseover', () => changeColor('orange'));
+        // box.addEventListener('mouseout',  () => changeColor('black'));
+
+
+        // -------------------------------------------------------
+        // 4. 이벤트 종류 참고
+        //
+        //   'click'     : 마우스 클릭
+        //   'mouseover' : 마우스 올림
+        //   'mouseout'  : 마우스 나감
+        //   'input'     : 입력창 입력
+        //   'scroll'    : 스크롤
+        //   'keydown'   : 키보드 누름
+        //
+        //   ※ for 반복문은 이벤트가 아닙니다.
+        //     이벤트는 사용자의 행동 또는 브라우저 상태 변화로 발생
+        // -------------------------------------------------------
+    </script>
+
+</body>
+</html>
